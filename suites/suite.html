@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyeux Anniversaire 🌸</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #cceeff, #e6f7ff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .carte {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+      max-width: 500px;
+      width: 90%;
+      z-index: 2;
+    }
+
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.5rem;
+      border: 4px solid #87cefa;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #0077b6;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .fleur {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle at center, #87cefa, #0077b6);
+      border-radius: 50%;
+      animation: fleurir 6s infinite ease-in-out;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fleurir {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .carte {
+        padding: 1.2rem;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+      .audio-button {
+    background: linear-gradient(135deg, #0077b6, #87cefa);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .audio-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .audio-button:active {
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  </style>
+</head>
+<body>
+  <div class="carte">
+    <div class="photo">
+      <img src="./WhatsApp Image 2025-04-13 à 11.28.28_2bb7f79e.jpg" alt="Photo de Nikè">
+    </div>
+    <h1>Joyeux Anniversaire Nikè 🌸</h1>
+    <p>
+      En ce jour précieux et rempli de lumière, <br>
+      Une lumière douce vient se poser.<br>
+      Que chaque instant soit un joyau brillant<br>
+      Qui mérite mille sourires et un ciel clair.<br><br>
+      Et que le bonheur te suive éternellement.<br>
+      Que ce jour spécial réchauffe ton âme,<br>
+      Et que ce jour spécial, empreint de douceur,<br>
+      Tout tes voeux se réalisent, comme un doux rêve.<br><br>
+      Que la joie t'accompagne à chaque pas,<br>
+      <br><br>
+      Bel.....
+    </p>
+  </div>
+
+  <button id="playAudio" class="audio-button">🎵 Lancer la musique</button>
+
+  <script>
+    function creerFleurs(nb) {
+      for (let i = 0; i < nb; i++) {
+        const fleur = document.createElement('div');
+        fleur.classList.add('fleur');
+        fleur.style.top = Math.random() * 100 + 'vh';
+        fleur.style.left = Math.random() * 100 + 'vw';
+        fleur.style.animationDelay = (Math.random() * 5) + 's';
+        const size = 30 + Math.random() * 30;
+        fleur.style.width = fleur.style.height = size + 'px';
+
+        // Supprimer la fleur après animation
+        setTimeout(() => {
+          fleur.remove();
+        }, 6000);
+
+        document.body.appendChild(fleur);
+      }
+
+      // Recrée des fleurs régulièrement
+      setTimeout(() => creerFleurs(nb), 7000);
+    }
+
+    creerFleurs(25);
+    document.getElementById('playAudio').addEventListener('click', () => {
+    const audio = document.querySelector('audio');
+    audio.play().then(() => {
+      console.log('Lecture audio démarrée');
+    }).catch(error => {
+      console.log('Erreur lors de la lecture audio :', error);
+    });
+  });  
+    
+  </script>
+</body>
+</html>
